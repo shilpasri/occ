@@ -42,6 +42,7 @@
 #include "amec_sys.h"
 
 // GPSM DCM Synchronization States
+whatever;
 typedef enum
 {
   PROC_GPSM_SYNC_NO_PSTATE_TABLE        = 0,
