@@ -72,6 +72,7 @@ uint32_t G_proc_gpst_fmin = 0;
 // Holds Pmax from GPST for ease of proc_freq2pstate calculation
 int8_t   G_proc_gpst_pmax = 0;
 
+uint8_t Derrating_const = 89;
 // Remembers if we are a DCM, for DCOM's sake
 bool G_isDcm      = FALSE;
 
@@ -127,7 +128,6 @@ void proc_gpsm_dcm_sync_update_from_mbox(proc_gpsm_dcm_sync_occfw_t * i_dcm_sync
         G_proc_dcm_sync_state.pstate_f = i_dcm_sync_state->pstate_f;
     }
 }
-
 
 // Function Specification
 //
@@ -1118,6 +1118,10 @@ void populate_sensor_tbl_to_mem()
     G_sensor_table.pwr250usvdd = AMECSENSOR_PTR(PWR250USVDD0)->sample;
     G_sensor_table.pwr250usvcs = AMECSENSOR_PTR(PWR250USVCS0)->sample;
     G_sensor_table.pwr250usmem = AMECSENSOR_PTR(PWR250USMEM0)->sample;
+    G_sensor_table.current_pcap = G_master_pcap_data.current_pcap;
+    G_sensor_table.soft_min_pcap = G_master_pcap_data.soft_min_pcap;
+    G_sensor_table.hard_min_pcap = G_master_pcap_data.hard_min_pcap;
+    G_sensor_table.max_pcap = G_master_pcap_data.max_pcap;
 
     G_sensor_table.core_mask = 0;
     G_sensor_table.chip_bw = 0;

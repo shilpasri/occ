@@ -38,6 +38,8 @@
 #include "appletManager.h"
 #include "gpsm.h"
 #include "pstates.h"
+#include "occ_sys_config.h"
+
 
 // GPSM DCM Synchronization - used by MBOX to transfer between DCM M & S
 typedef struct
@@ -110,7 +112,12 @@ typedef struct __attribute__ ((packed))
     uint64_t 	count;
     uint32_t	chip_energy;
     uint32_t	system_energy;
-    uint8_t	pad[54];
+//Power_Cap Sensors
+    uint16_t    current_pcap;
+    uint16_t    soft_min_pcap;
+    uint16_t    hard_min_pcap;
+    uint16_t    max_pcap;
+    uint8_t     pad[46];
 } sapphire_sensor_t __attribute__ ((aligned (128)));
 
 enum {
